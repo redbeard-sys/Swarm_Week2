@@ -1,0 +1,8 @@
+# s1: port 0 = eth0 -> h1 (host), port 1 = eth1 -> s2 (fabric)
+table_add forward set_egress 0 => 1
+table_add forward set_egress 1 => 0
+# host port: insert score=4, bitmap=0x0001 (h1's bit), key_hint=0x7a3f
+table_add ingress_role in_host 0 => 4 0x0001 0x7a3f
+table_add ingress_role in_fabric 1 => 1
+table_add egress_role out_host 0 =>
+table_add egress_role out_fabric 1 =>

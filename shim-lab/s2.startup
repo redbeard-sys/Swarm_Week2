@@ -1,0 +1,1 @@
+bash /shared/p4/switch.sh s2 "eth0 eth1"

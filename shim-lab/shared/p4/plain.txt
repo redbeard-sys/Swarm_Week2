@@ -1,0 +1,3 @@
+# Turn this switch into a non-programmable one: forward only, never touch the shim.
+table_clear ingress_role
+table_clear egress_role

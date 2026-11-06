@@ -1,0 +1,7 @@
+# s2: port 0 = eth0 -> s1 (fabric), port 1 = eth1 -> r1 (fabric)
+table_add forward set_egress 0 => 1
+table_add forward set_egress 1 => 0
+table_add ingress_role in_fabric 0 => 1
+table_add ingress_role in_fabric 1 => 1
+table_add egress_role out_fabric 0 =>
+table_add egress_role out_fabric 1 =>

@@ -1,0 +1,1 @@
+bash /shared/p4/switch.sh s3 "eth0"

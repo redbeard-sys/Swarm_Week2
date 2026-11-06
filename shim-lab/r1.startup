@@ -1,0 +1,9 @@
+sysctl -qw net.ipv6.conf.all.disable_ipv6=1
+ip addr add 10.0.1.254/24 dev eth0
+ip addr add 10.0.2.254/24 dev eth1
+for i in eth0 eth1; do
+    ip link set $i mtu 1508            # fabric links carry 8 extra bytes
+    ip link set $i up
+    ethtool -K $i gro off lro off tx off >/dev/null 2>&1   # XDP must see single frames
+done
+bash /shared/xdp/load.sh > /var/log/shim-xdp.log 2>&1
